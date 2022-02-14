@@ -124,7 +124,13 @@ public:
     cloud.height = config_.init_height;
     cloud.is_dense = static_cast<uint8_t>(config_.is_dense);
     cloud.row_step = cloud.width * cloud.point_step;
-    cloud.data.resize(scan_msg->packets.size() * config_.scans_per_packet * cloud.point_step);
+    //These changes are from: https://github.com/ros-drivers/velodyne/pull/328
+    //cloud.data.resize(scan_msg->packets.size() * config_.scans_per_packet * cloud.point_step);
+    int data_size = scan_msg->packets.size() * config_.scans_per_packet * cloud.point_step;
+    if (!cloud.is_dense && cloud.width == 64) {
+	    data_size = scan_msg->packets.size() * config_.scans_per_packet * cloud.point_step * 2;
+    }
+    cloud.data.resize(data_size);
     // Clear out the last data; this is important in the organized cloud case
     std::fill(cloud.data.begin(), cloud.data.end(), 0);
     if (config_.transform) {

@@ -120,7 +120,7 @@ Convert::Convert(const rclcpp::NodeOptions & options)
 
   // advertise output point cloud (before subscribing to input data)
   output_ =
-    this->create_publisher<sensor_msgs::msg::PointCloud2>("velodyne_points", 10);
+    this->create_publisher<sensor_msgs::msg::PointCloud2>("/avt_341/points", 10);
 
   // subscribe to VelodyneScan packets
   velodyne_scan_ =

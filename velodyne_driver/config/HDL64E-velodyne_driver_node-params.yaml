@@ -8,6 +8,7 @@ velodyne_driver_node:
         read_fast: false
         repeat_delay: 0.0
         frame_id: velodyne
-        model: 32C
+        model: 64E
         rpm: 600.0
         port: 2368
+        timestamp_first_packet: false
