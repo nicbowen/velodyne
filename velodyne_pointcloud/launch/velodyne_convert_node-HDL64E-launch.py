@@ -46,7 +46,7 @@ def generate_launch_description():
     params_file = os.path.join(share_dir, 'config', 'HDL64E-velodyne_convert_node-params.yaml')
     with open(params_file, 'r') as f:
         params = yaml.safe_load(f)['velodyne_convert_node']['ros__parameters']
-    params['calibration'] = os.path.join(share_dir, 'params', '64e_utexas.yaml')
+    params['calibration'] = os.path.join(share_dir, 'params', '64e_s3-xiesc.yaml')
     velodyne_convert_node = launch_ros.actions.Node(package='velodyne_pointcloud',
                                                     executable='velodyne_convert_node',
                                                     output='both',

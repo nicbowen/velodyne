@@ -1,6 +1,6 @@
 velodyne_convert_node:
     ros__parameters:
-        calibration: 64e_utexas.yaml
+        calibration: 64e_s3-xiesc.yaml
         model: 64E
         min_range: 0.9
         max_range: 200.0
